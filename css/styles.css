@@ -8,3 +8,10 @@
 .hide {
 	display: none;
 }
+
+#game_frame {
+	display: block;
+	margin: auto;
+	aspect-ratio: 1;
+	border: 1vw solid #dddde4;
+}
