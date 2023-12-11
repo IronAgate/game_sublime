@@ -9,7 +9,7 @@
 	display: none;
 }
 
-#game_frame {
+#game_panel {
 	display: block;
 	margin: auto;
 	aspect-ratio: 1;
