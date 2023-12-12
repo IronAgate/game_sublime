@@ -9,8 +9,12 @@
 	display: none;
 }
 
+body {
+	padding: 1%;
+}
+
 #game_panel {
 	display: block;
 	margin: auto;
-	border: 1vw solid #dddde4;
+	/*border: 1vw solid #dddde4;*/
 }
