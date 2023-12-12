@@ -1,68 +1,44 @@
 
 class Panel {
-	
-	constructor(resX, resY) {
-		
+	constructor(divid, resX, resY, startup) {
+		this.root = document.getElementById(divid);
 		this.resX = resX;
 		this.resY = resY;
-		
-		this.root = document.getElementById("game_panel");
 		
 		this.root.style.aspectRatio = resX/resY;
 		
 		this.canvas = document.createElement("canvas");
 		this.canvas.style.display = "none";
-		
 		this.canvas.width = resX;
 		this.canvas.height = resY;
-		
 		this.canvas.style.width = "100%";
 		this.canvas.style.height = "100%";
 		this.root.appendChild(this.canvas);
 		
-		
-		this.canvas.style.backgroundColor = "red"; //t
+		this.canvas.style.backgroundColor = "#f00"; //t
 		
 		this.ctx = this.canvas.getContext("2d");
-		this.ctx.fillRect(10, 10, 10,10);
+		this.ctx.imageSmoothingEnabled = false;
 		
-		
+		this.ctx.fillRect(10, 10, 75,75);
 		
 		const btn = document.createElement("button");
-		btn.textContent = "[start]";
-		btn.style.margin = "auto";
+		btn.textContent = "start";
 		btn.style.width = "100%";
 		btn.style.height = "100%";
-		
-		const c = this.canvas;
-		
-		btn.onclick = function() {
-			c.style.display = "block";
-			this.style.display = "none";
-			
-			
-			
-			
-			function temp() {
-				let x = Number(c.style.width.slice(0,-1));
-				c.style.width = String(x - 1) + '%';
+		const c = this.canvas; //simplifies func below
+		btn.onclick = 
+			function() {
+				c.style.display = "block";
+				this.style.display = "none";
+				
+				startup();
 			}
-			
-			//setInterval(temp, 1000);
-			
-		}
-
-		this.root.appendChild(btn);
-		//num of game pixels that should fit within the panel
-		//this.zoom = zoom;
-		
-		
-		
+		this.root.appendChild(btn);	
 	}
 }
 
-let game_panel = new Panel(500,250);
+let game_panel = new Panel("game_panel", 500,500);
 
-function test() {
-	game_panel.ctx.fillRect(50, 70, 70, 70);
-}
+let img = document.getElementById("imgSlime");
+game_panel.ctx.drawImage(img, 0,0, 50,50);
