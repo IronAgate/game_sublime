@@ -6,7 +6,7 @@ class Panel {
 		this.resY = resY;
 		
 		this.root.style.aspectRatio = resX/resY;
-		this.root.style.position = "relative";
+		this.root.style.position = "relative"; //for layering: https://www.shecodes.io/athena/50922-how-to-make-an-absolute-box-responsive-with-css#:~:text=To%20make%20an%20absolute%20position%20box%20responsive%2C%20you%20should%20use,parent%20container%20and%20adjust%20accordingly.
 		
 		this.bgCanvas = document.createElement("canvas");
 		this.bgCanvas.style.display = "none";
@@ -14,7 +14,7 @@ class Panel {
 		this.bgCanvas.height = resY;
 		this.bgCanvas.style.width = "100%";
 		this.bgCanvas.style.height = "100%";
-		this.bgCanvas.style.zIndex = 0;
+		this.bgCanvas.style.zIndex = 0; //for layering
 		this.bgCanvas.style.position = "absolute"; //for layering
 		this.root.appendChild(this.bgCanvas);
 
@@ -56,11 +56,15 @@ class Panel {
 	}
 	set_background(bgImgId) {
 		this.bgCtx.drawImage(document.getElementById(bgImgId), 0, 0, this.resX, this.resY);
+		//rethink: setting color, clearing last bg, color behind transparent bg, etc
 	}
+	
 }
 
 let game_panel = new Panel("game_panel", 500,500);
 
 let img = document.getElementById("img_slime");
 game_panel.ctx.drawImage(img, 10,10, 50,50);
+
 game_panel.set_background("img_slime");
+game_panel.bgCanvas.style.backgroundColor = "red";
