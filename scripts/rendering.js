@@ -34,10 +34,6 @@ class Panel {
 		this.ctx = this.canvas.getContext("2d");
 		this.ctx.imageSmoothingEnabled = false;
 		
-		
-		this.ctx.fillRect(10, 10, 50,50);
-		
-		
 		const btn = document.createElement("button");
 		btn.textContent = "start";
 		btn.style.width = "100%";
@@ -58,11 +54,33 @@ class Panel {
 		this.bgCtx.drawImage(document.getElementById(bgImgId), 0, 0, this.resX, this.resY);
 		//rethink: setting color, clearing last bg, color behind transparent bg, etc
 	}
-	
+}
+
+class Sprite {
+	/*
+	knows
+		resolution/size X,Y
+			store as game pixels or canvas?
+			if game, store ratio?
+		position X,Y
+		canvas
+	does
+		draws to canvas at pos+size
+			undraws prev? or at canvas lvl?
+		visual effects, if any: shrink, stretch, etc
+		?sounds
+	*/
+	/*
+	constructor(resX, resY) {
+		this.resX = resX;
+		this.resY = resY;
+	}
+	*/
 }
 
 let game_panel = new Panel("game_panel", 500,500);
 
+game_panel.ctx.fillRect(10, 10, 50,50);
 let img = document.getElementById("img_slime");
 game_panel.ctx.drawImage(img, 10,10, 50,50);
 
